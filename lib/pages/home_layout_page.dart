@@ -12,7 +12,7 @@ class HomeLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.pageBackground,
-      // Hardcoded to HomePage for now until the router is set up!
+      extendBody: true,
       body: navigationShell,
       bottomNavigationBar: BottomNav(navigationShell: navigationShell),
     );

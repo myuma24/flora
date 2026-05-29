@@ -28,16 +28,16 @@ final GoRouter _router = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/cart',
-              builder: (context, state) => const CartPage(),
+              path: '/orders',
+              builder: (context, state) => const OrdersPage(),
             ),
           ],
         ),
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/orders',
-              builder: (context, state) => const OrdersPage(),
+              path: '/cart',
+              builder: (context, state) => const CartPage(),
             ),
           ],
         ),
@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        textTheme: GoogleFonts.interTextTheme(),
+        textTheme: GoogleFonts.googleSansFlexTextTheme(),
       ),
       routerConfig: _router,
     );

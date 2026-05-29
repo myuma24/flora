@@ -15,7 +15,7 @@ const List<Map<String, String>> categoryData = [
     "label": "Indoor",
   }, // using icons you already have as examples!
   {"label": "Outdoor"},
-  {"icon": "cart-shopping", "label": "Accessories"},
+  {"icon": "cart", "label": "Accessories"},
   {"label": "Pots"},
 ];
 

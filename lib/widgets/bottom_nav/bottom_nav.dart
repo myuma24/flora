@@ -1,6 +1,5 @@
-import 'package:flora/constants/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flora/widgets/app_icon.dart';
+import 'package:flora/widgets/bottom_nav/nav_button.dart';
 import 'package:go_router/go_router.dart';
 
 class BottomNav extends StatelessWidget {
@@ -10,59 +9,61 @@ class BottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: AppColors.pageBackground,
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(63, 0, 0, 0),
-            blurRadius: 5,
-            offset: Offset(0, 1),
+    final int currentIndex = navigationShell.currentIndex;
+
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+        child: Container(
+          height: 65.0,
+          decoration: const BoxDecoration(
+            color: Color(0xFF242424),
+            borderRadius: BorderRadius.all(Radius.circular(999.0)),
           ),
-        ],
-      ),
-      child: SafeArea(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GestureDetector(
-              onTap: () => navigationShell.goBranch(0),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.0),
-                child: AppIcon("home"),
-              ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              children: [
+                _buildNavItem(0, "home", "Home", currentIndex),
+                _buildNavItem(1, "build", "Build", currentIndex),
+                _buildNavItem(2, "cart", "Cart", currentIndex),
+                _buildNavItem(3, "chat", "Chat", currentIndex),
+                _buildNavItem(4, "profile", "Profile", currentIndex),
+              ],
             ),
-            GestureDetector(
-              onTap: () => navigationShell.goBranch(1),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.0),
-                child: AppIcon("cart-shopping"),
-              ),
-            ),
-            GestureDetector(
-              onTap: () => navigationShell.goBranch(2),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.0),
-                child: AppIcon("order"),
-              ),
-            ),
-            GestureDetector(
-              onTap: () => navigationShell.goBranch(3),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.0),
-                child: AppIcon("message"),
-              ),
-            ),
-            GestureDetector(
-              onTap: () => navigationShell.goBranch(4),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.0),
-                child: AppIcon("profile"),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
+  }
+
+  Widget _buildNavItem(int index, String icon, String label, int currentIndex) {
+    final isSelected = currentIndex == index;
+    final navButton = NavButton(icon: icon, label: label, selected: isSelected);
+
+    if (isSelected) {
+      return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => navigationShell.goBranch(index),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: navButton,
+        ),
+      );
+    } else {
+      return Expanded(
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () => navigationShell.goBranch(index),
+          child: Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: navButton,
+            ),
+          ),
+        ),
+      );
+    }
   }
 }
