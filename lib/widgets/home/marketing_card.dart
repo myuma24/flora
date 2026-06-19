@@ -1,7 +1,7 @@
 import 'package:flora/constants/app_colors.dart';
-import 'package:flora/widgets/app_icon.dart';
+import 'package:flora/constants/app_text_styles.dart';
+import 'package:flora/widgets/button.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MarketingCard extends StatelessWidget {
   const MarketingCard({super.key});
@@ -10,35 +10,83 @@ class MarketingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFF999999),
-        borderRadius: BorderRadius.circular(10.0),
+        color: AppColors.floraBlack,
+        borderRadius: BorderRadius.circular(24.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(36.0, 24.0, 18.0, 24.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
+            // Header Row: Dot + Title (left) & Hide (right)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      width: 8.0,
+                      height: 8.0,
+                      decoration: const BoxDecoration(
+                        color: AppColors.primaryPink,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    const SizedBox(width: 8.0),
+                    Text(
+                      "Flora’s May Deal",
+                      style: AppTextStyles.labelMono.copyWith(
+                        color: AppColors.offWhite,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  "× Hide",
+                  style: AppTextStyles.labelSans.copyWith(
+                    color: Color(0xFFA7A29B),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20.0),
+
+            // Title Text
             Text(
-              "20% Off",
-              style: GoogleFonts.inter(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 20 * -0.02,
+              "20% Off Peonies",
+              style: AppTextStyles.subHeader.copyWith(
+                color: AppColors.offWhite,
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.pageBackground,
-                borderRadius: BorderRadius.circular(12.0),
+            const SizedBox(height: 12.0),
+
+            // Body Text
+            Text(
+              "Get 20% off all peonies when you purchase three or more. Use promo code 2OFLORA.",
+              style: AppTextStyles.subBodySmall.copyWith(
+                color: AppColors.offWhite,
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SizedBox(
-                  width: 14,
-                  height: 11,
-                  child: AppIcon("right-arrow"),
+            ),
+            const SizedBox(height: 24.0),
+
+            // Footer Row: Date & Buy Now Button
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "Ends 5/31 • View Terms",
+                  style: AppTextStyles.labelSans.copyWith(
+                    color: AppColors.subLabelLighter,
+                  ),
                 ),
-              ),
+                AppButton(
+                  text: "Buy Now",
+                  type: AppButtonType.primary,
+                  onPressed: () {},
+                ),
+              ],
             ),
           ],
         ),
@@ -46,3 +94,4 @@ class MarketingCard extends StatelessWidget {
     );
   }
 }
+

@@ -1,49 +1,85 @@
 import 'package:flora/constants/app_colors.dart';
-import 'package:flora/widgets/home/catalog_card.dart';
+import 'package:flora/widgets/home/category_chip.dart';
 import 'package:flora/widgets/home/category_header.dart';
+import 'package:flora/widgets/home/home_header.dart';
 import 'package:flora/widgets/home/marketing_card.dart';
 import 'package:flora/widgets/home/product_card.dart';
-import 'package:flora/widgets/home/search_bar.dart';
-import 'package:flora/widgets/home/category_chip.dart';
 import 'package:flutter/material.dart';
 
 // 1. Here is your Top-Level Global Constant Array!
 const List<Map<String, String>> categoryData = [
-  {"label": "All"},
-  {
-    "icon": "home",
-    "label": "Indoor",
-  }, // using icons you already have as examples!
-  {"label": "Outdoor"},
-  {"icon": "cart", "label": "Accessories"},
-  {"label": "Pots"},
+  {"label": "All • 68"},
+  {"label": "Focal • 47"},
+  {"label": "Secondary • 36"},
+  {"label": "Line • 82"},
 ];
 
 const List<Map<String, String>> catalogData = [
-  {"title": "Premade"},
-  {"title": "Focal"},
-  {"title": "Filler"},
-  {"title": "Line"},
+  {"title": "Premade", "imagePath": "assets/images/peony.png"},
+  {"title": "Focal", "imagePath": "assets/images/alstroemeria.png"},
+  {"title": "Filler", "imagePath": "assets/images/ranunculus.png"},
+  {"title": "Line", "imagePath": "assets/images/white-anenome.png"},
 ];
 
 const List<Map<String, String>> productData = [
   {
-    "category": "Focal Flower",
+    "category": "Focal • Filler",
     "name": "Red Rose",
     "originalPrice": "2.97",
     "salePrice": "1.97",
+    "imagePath": "assets/images/peony.png",
   },
   {
-    "category": "Focal Flower",
+    "category": "Focal • Filler",
     "name": "White Daisy",
     "originalPrice": "1.97",
     "salePrice": "1.97",
+    "imagePath": "assets/images/alstroemeria.png",
   },
   {
-    "category": "Filler",
+    "category": "Focal • Filler",
     "name": "Lily of the Valley",
     "originalPrice": "2.99",
     "salePrice": "2.99",
+    "imagePath": "assets/images/ranunculus.png",
+  },
+  {
+    "category": "Focal • Filler",
+    "name": "White Anemone",
+    "originalPrice": "3.50",
+    "salePrice": "3.00",
+    "imagePath": "assets/images/white-anenome.png",
+  },
+];
+
+const List<Map<String, String>> pickedForYouData = [
+  {
+    "category": "Focal • Filler",
+    "name": "Alstroemeria",
+    "originalPrice": "2.97",
+    "salePrice": "2.97",
+    "imagePath": "assets/images/alstroemeria.png",
+  },
+  {
+    "category": "Focal • Filler",
+    "name": "White Anemone",
+    "originalPrice": "2.97",
+    "salePrice": "2.97",
+    "imagePath": "assets/images/white-anenome.png",
+  },
+  {
+    "category": "Focal • Filler",
+    "name": "Peony",
+    "originalPrice": "3.99",
+    "salePrice": "3.99",
+    "imagePath": "assets/images/peony.png",
+  },
+  {
+    "category": "Focal • Filler",
+    "name": "Ranunculus",
+    "originalPrice": "2.50",
+    "salePrice": "2.50",
+    "imagePath": "assets/images/ranunculus.png",
   },
 ];
 
@@ -53,7 +89,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.pageBackground,
+      backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -63,7 +99,7 @@ class HomePage extends StatelessWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: HomeSearchBar(),
+                  child: HomeHeader(),
                 ),
 
                 // Categories
@@ -75,10 +111,7 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     children: [
                       for (int i = 0; i < categoryData.length; i++) ...[
-                        CategoryChip(
-                          icon: categoryData[i]['icon'],
-                          label: categoryData[i]['label'],
-                        ),
+                        CategoryChip(label: categoryData[i]['label']),
                         if (i != categoryData.length - 1)
                           const SizedBox(width: 8.0),
                       ],
@@ -98,31 +131,7 @@ class HomePage extends StatelessWidget {
 
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: CategoryHeader(title: "Catalog"),
-                ),
-
-                const SizedBox(height: 8.0),
-
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    children: [
-                      for (int i = 0; i < catalogData.length; i++) ...[
-                        CatalogCard(title: catalogData[i]['title']!),
-
-                        if (i != catalogData.length - 1)
-                          const SizedBox(width: 24.0),
-                      ],
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 16.0),
-
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: CategoryHeader(title: "Popular"),
+                  child: CategoryHeader(title: "In Season"),
                 ),
 
                 const SizedBox(height: 8.0),
@@ -138,8 +147,38 @@ class HomePage extends StatelessWidget {
                           name: productData[i]['name']!,
                           originalPrice: productData[i]['originalPrice']!,
                           salePrice: productData[i]['salePrice']!,
+                          imagePath: productData[i]['imagePath']!,
                         ),
                         if (i != productData.length - 1)
+                          const SizedBox(width: 12.0),
+                      ],
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 16.0),
+
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: CategoryHeader(title: "Picked For You"),
+                ),
+
+                const SizedBox(height: 8.0),
+
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      for (int i = 0; i < pickedForYouData.length; i++) ...[
+                        ProductCard(
+                          category: pickedForYouData[i]['category']!,
+                          name: pickedForYouData[i]['name']!,
+                          originalPrice: pickedForYouData[i]['originalPrice']!,
+                          salePrice: pickedForYouData[i]['salePrice']!,
+                          imagePath: pickedForYouData[i]['imagePath']!,
+                        ),
+                        if (i != pickedForYouData.length - 1)
                           const SizedBox(width: 12.0),
                       ],
                     ],

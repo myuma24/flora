@@ -7,10 +7,8 @@ class OrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: AppColors.pageBackground,
-      body: Center(
-        child: Text('Orders Page'),
-      ),
+      backgroundColor: AppColors.background,
+      body: Center(child: Text('Orders Page')),
     );
   }
 }

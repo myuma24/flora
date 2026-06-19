@@ -11,7 +11,7 @@ class HomeLayoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.pageBackground,
+      backgroundColor: AppColors.background,
       extendBody: true,
       body: navigationShell,
       bottomNavigationBar: BottomNav(navigationShell: navigationShell),

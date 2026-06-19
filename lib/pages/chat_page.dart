@@ -7,10 +7,8 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: AppColors.pageBackground,
-      body: Center(
-        child: Text('Chat Page'),
-      ),
+      backgroundColor: AppColors.background,
+      body: Center(child: Text('Chat Page')),
     );
   }
 }
