@@ -1,5 +1,5 @@
-import 'package:flora/constants/app_colors.dart';
-import 'package:flora/widgets/bottom_nav/bottom_nav.dart';
+import 'package:flora/core/theme/app_colors.dart';
+import 'package:flora/features/navigation/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

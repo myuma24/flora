@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flora/widgets/bottom_nav/nav_button.dart';
+import 'package:flora/features/navigation/widgets/nav_button.dart';
 import 'package:go_router/go_router.dart';
 
 class BottomNav extends StatelessWidget {

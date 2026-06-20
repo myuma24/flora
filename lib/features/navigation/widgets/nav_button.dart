@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flora/widgets/app_icon.dart';
+import 'package:flora/core/widgets/app_icon.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NavButton extends StatelessWidget {
@@ -29,7 +29,7 @@ class NavButton extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AppIcon(icon, color: textColor, size: 16.0),
+              AppIcon(icon, color: textColor, overrideSize: 16.0),
               const SizedBox(width: 8.0),
               Text(
                 label,
@@ -43,7 +43,7 @@ class NavButton extends StatelessWidget {
         ),
       );
     } else {
-      return AppIcon(icon, color: textColor, size: 16.0);
+      return AppIcon(icon, color: textColor, overrideSize: 16.0);
     }
   }
 }

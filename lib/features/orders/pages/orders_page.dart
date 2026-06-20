@@ -1,4 +1,4 @@
-import 'package:flora/constants/app_colors.dart';
+import 'package:flora/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class OrdersPage extends StatelessWidget {

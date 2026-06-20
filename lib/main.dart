@@ -1,12 +1,13 @@
-import 'package:flora/pages/cart_page.dart';
-import 'package:flora/pages/chat_page.dart';
-import 'package:flora/pages/home_page.dart';
-import 'package:flora/pages/orders_page.dart';
-import 'package:flora/pages/profile_page.dart';
+import 'package:flora/features/cart/pages/cart_page.dart';
+import 'package:flora/features/chat/pages/chat_page.dart';
+import 'package:flora/features/home/pages/home_page.dart';
+import 'package:flora/features/orders/pages/orders_page.dart';
+import 'package:flora/features/product/pages/product_detail_page.dart';
+import 'package:flora/features/profile/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'pages/home_layout_page.dart';
+import 'features/home/pages/home_layout_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,6 +59,13 @@ final GoRouter _router = GoRouter(
           ],
         ),
       ],
+    ),
+    GoRoute(
+      path: '/product-detail',
+      builder: (context, state) {
+        final productName = state.uri.queryParameters['name'];
+        return ProductDetailPage(productName: productName);
+      },
     ),
   ],
 );

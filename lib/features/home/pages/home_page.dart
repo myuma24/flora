@@ -1,9 +1,9 @@
-import 'package:flora/constants/app_colors.dart';
-import 'package:flora/widgets/home/category_chip.dart';
-import 'package:flora/widgets/home/category_header.dart';
-import 'package:flora/widgets/home/home_header.dart';
-import 'package:flora/widgets/home/marketing_card.dart';
-import 'package:flora/widgets/home/product_card.dart';
+import 'package:flora/core/theme/app_colors.dart';
+import 'package:flora/features/home/widgets/category_chip.dart';
+import 'package:flora/features/home/widgets/category_header.dart';
+import 'package:flora/features/home/widgets/home_header.dart';
+import 'package:flora/features/home/widgets/marketing_card.dart';
+import 'package:flora/features/home/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 // 1. Here is your Top-Level Global Constant Array!

@@ -1,5 +1,5 @@
-import 'package:flora/constants/app_text_styles.dart';
-import 'package:flora/widgets/app_icon.dart';
+import 'package:flora/core/theme/app_text_styles.dart';
+import 'package:flora/core/widgets/app_icon.dart';
 import 'package:flutter/material.dart';
 
 class HomeHeader extends StatefulWidget {
@@ -23,9 +23,9 @@ class _HomeHeaderState extends State<HomeHeader> {
             ],
           ),
         ),
-        AppIcon("search_new", size: 32.0),
+        AppIcon("search_new", overrideSize: 32.0),
         SizedBox(width: 8.0),
-        AppIcon("notif", size: 32.0),
+        AppIcon("notif", overrideSize: 32.0),
       ],
     );
     // return TextField(

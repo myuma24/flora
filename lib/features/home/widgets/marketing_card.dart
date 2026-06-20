@@ -1,6 +1,6 @@
-import 'package:flora/constants/app_colors.dart';
-import 'package:flora/constants/app_text_styles.dart';
-import 'package:flora/widgets/button.dart';
+import 'package:flora/core/theme/app_colors.dart';
+import 'package:flora/core/theme/app_text_styles.dart';
+import 'package:flora/core/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class MarketingCard extends StatelessWidget {

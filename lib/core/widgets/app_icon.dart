@@ -1,0 +1,96 @@
+import 'package:flora/core/theme/app_colors.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+enum AppIconSize {
+  small,
+  defaultSize,
+}
+
+class AppIcon extends StatelessWidget {
+  final String type;
+  final bool alert;
+  final AppIconSize size;
+  final bool active;
+  final Color? color;
+  final double? overrideSize;
+  final Color? fillColor;
+  final Color? strokeColor;
+
+  const AppIcon(
+    this.type, {
+    super.key,
+    this.alert = false,
+    this.size = AppIconSize.defaultSize,
+    this.active = true,
+    this.color,
+    this.overrideSize,
+    this.fillColor,
+    this.strokeColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // 1. If overrideSize is set, render the raw SvgPicture without the circular container
+    if (overrideSize != null) {
+      return SvgPicture.asset(
+        'assets/icons/$type.svg',
+        width: overrideSize,
+        height: overrideSize,
+        colorFilter: color != null 
+            ? ColorFilter.mode(color!, BlendMode.srcIn) 
+            : null,
+      );
+    }
+
+    // 2. Otherwise, render wrapped in the circular container
+    final double containerSize = size == AppIconSize.small ? 24.0 : 40.0;
+    // Figma SVGs include empty space natively, so the SvgPicture should match containerSize
+    final double iconSize = containerSize;
+
+    final Color backgroundColor = fillColor ?? (active ? Colors.white : AppColors.offWhite);
+    final Color borderStrokeColor = strokeColor ?? AppColors.strokeColor;
+
+    return Container(
+      width: containerSize,
+      height: containerSize,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        shape: BoxShape.circle,
+        border: borderStrokeColor == Colors.transparent
+            ? null
+            : Border.all(
+                color: borderStrokeColor,
+                width: 1.0,
+              ),
+      ),
+      alignment: Alignment.center,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          SvgPicture.asset(
+            'assets/icons/$type.svg',
+            width: iconSize,
+            height: iconSize,
+            colorFilter: color != null 
+                ? ColorFilter.mode(color!, BlendMode.srcIn) 
+                : null,
+          ),
+          if (alert)
+            Positioned(
+              top: size == AppIconSize.small ? 4.0 : 8.0,
+              right: size == AppIconSize.small ? 4.0 : 8.0,
+              child: Container(
+                width: size == AppIconSize.small ? 6.0 : 8.0,
+                height: size == AppIconSize.small ? 6.0 : 8.0,
+                decoration: const BoxDecoration(
+                  color: Color(0xFFF4405F),
+                  shape: BoxShape.circle,
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}

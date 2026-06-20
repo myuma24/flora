@@ -1,6 +1,6 @@
 import 'dart:ui';
-import 'package:flora/constants/app_colors.dart';
-import 'package:flora/constants/app_text_styles.dart';
+import 'package:flora/core/theme/app_colors.dart';
+import 'package:flora/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -104,18 +104,24 @@ class _AppButtonState extends State<AppButton> {
       );
     }
 
-    Widget buttonContent = Opacity(
-      opacity: opacity,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(widget.text, style: textStyle),
-          if (widget.trailingIcon != null) ...[
-            const SizedBox(width: 8.0),
-            widget.trailingIcon!,
+    Widget buttonContent = Center(
+      widthFactor: 1.0,
+      child: Opacity(
+        opacity: opacity,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              widget.text,
+              style: textStyle,
+            ),
+            if (widget.trailingIcon != null) ...[
+              const SizedBox(width: 8.0),
+              widget.trailingIcon!,
+            ],
           ],
-        ],
+        ),
       ),
     );
 
