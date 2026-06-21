@@ -33,23 +33,18 @@ class AppIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 1. If overrideSize is set, render the raw SvgPicture without the circular container
-    if (overrideSize != null) {
-      return SvgPicture.asset(
-        'assets/icons/$type.svg',
-        width: overrideSize,
-        height: overrideSize,
-        colorFilter: color != null 
-            ? ColorFilter.mode(color!, BlendMode.srcIn) 
-            : null,
-      );
-    }
+    final double iconSize;
+    final double containerSize;
 
-    // 2. Otherwise, calculate sizes based on the new 24x24 SVG baseline
-    final double iconSize = size == AppIconSize.small ? 14.0 : 24.0;
-    final double containerSize = iconOnly 
-        ? iconSize 
-        : (size == AppIconSize.small ? 24.0 : 40.0);
+    if (overrideSize != null) {
+      containerSize = overrideSize!;
+      iconSize = iconOnly ? overrideSize! : overrideSize! * 0.6; // Scale internal icon proportionally unless iconOnly is true
+    } else {
+      iconSize = size == AppIconSize.small ? 14.0 : 24.0;
+      containerSize = iconOnly 
+          ? iconSize 
+          : (size == AppIconSize.small ? 24.0 : 40.0);
+    }
 
     final Color backgroundColor = fillColor ?? (active ? Colors.white : AppColors.offWhite);
     final Color borderStrokeColor = strokeColor ?? AppColors.strokeColor;

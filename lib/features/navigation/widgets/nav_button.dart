@@ -31,15 +31,13 @@ class NavButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AppIcon(icon, color: textColor, overrideSize: 24.0),
-              const SizedBox(width: 6.0),
+              AppIcon(icon, color: textColor, iconOnly: true),
+              const SizedBox(width: 8.0),
               Text(
                 label,
                 style: GoogleFonts.googleSansFlex(
                   color: textColor,
                   fontWeight: FontWeight.w500,
-                  height: 1.4,
-                  letterSpacing: 12.0 * 0.03,
                 ),
               ),
             ],
@@ -47,7 +45,7 @@ class NavButton extends StatelessWidget {
         ),
       );
     } else {
-      return AppIcon(icon, color: textColor, overrideSize: 24.0);
+      return AppIcon(icon, color: textColor, iconOnly: true);
     }
   }
 }
