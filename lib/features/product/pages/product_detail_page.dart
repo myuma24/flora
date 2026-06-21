@@ -249,7 +249,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
           // Top controls overlay (Sticky)
           Positioned(
-            top: MediaQuery.of(context).padding.top + 8.0,
+            top: MediaQuery.of(context).padding.top + 16.0,
             left: 16.0,
             right: 16.0,
             child: Row(
