@@ -4,6 +4,7 @@ import 'package:flora/core/widgets/app_icon.dart';
 import 'package:flora/core/widgets/button.dart';
 import 'package:flora/features/cart/widgets/cart_item.dart';
 import 'package:flora/features/cart/widgets/cart_totals.dart';
+import 'package:flora/features/checkout/widgets/delivery_options_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -87,10 +88,24 @@ class CartPage extends StatelessWidget {
               const SizedBox(height: 46.0),
 
               // Totals
-              const CartTotals(
+              CartTotals(
                 subtotal: "25.20",
                 discount: "5.99",
                 total: "19.21",
+                onContinue: () {
+                  showModalBottomSheet(
+                    context: context,
+                    useRootNavigator: true,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.white,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(24.0),
+                      ),
+                    ),
+                    builder: (context) => const DeliveryOptionsSheet(),
+                  );
+                },
               ),
               const SizedBox(height: 24.0),
             ],

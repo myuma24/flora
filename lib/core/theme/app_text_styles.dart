@@ -11,11 +11,11 @@ class AppTextStyles {
   );
 
   static final TextStyle subHeader = GoogleFonts.dmSerifDisplay(
-    fontSize: 20.0,
+    fontSize: 24.0,
     fontWeight: FontWeight.w400,
     color: Colors.black,
-    letterSpacing: 20.0 * 0,
-    height: 1.4,
+    letterSpacing: 20.0 * -0.02,
+    height: 0.88,
   );
 
   static final TextStyle dmSansHeader = GoogleFonts.dmSans(

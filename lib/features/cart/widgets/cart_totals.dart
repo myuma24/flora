@@ -7,12 +7,14 @@ class CartTotals extends StatelessWidget {
   final String subtotal;
   final String discount;
   final String total;
+  final VoidCallback? onContinue;
 
   const CartTotals({
     super.key,
     required this.subtotal,
     required this.discount,
     required this.total,
+    this.onContinue,
   });
 
   @override
@@ -61,7 +63,7 @@ class CartTotals extends StatelessWidget {
                 child: AppButton(
                   text: "Continue",
                   type: AppButtonType.primary,
-                  onPressed: () {},
+                  onPressed: onContinue ?? () {},
                 ),
               ),
             ],
