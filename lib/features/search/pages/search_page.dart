@@ -183,7 +183,7 @@ class _SearchPageState extends State<SearchPage> {
         children: [
           const AppIcon(
             "search_new",
-            overrideSize: 24.0,
+            overrideSize: 20.0,
             color: AppColors.subLabelDarker,
           ),
           const SizedBox(width: 8.0),

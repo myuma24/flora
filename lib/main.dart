@@ -1,3 +1,4 @@
+import 'package:flora/core/theme/app_colors.dart';
 import 'package:flora/features/cart/pages/cart_page.dart';
 import 'package:flora/features/chat/pages/chat_page.dart';
 import 'package:flora/features/home/pages/home_page.dart';
@@ -86,6 +87,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         textTheme: GoogleFonts.googleSansFlexTextTheme(),
+        dividerTheme: const DividerThemeData(
+          color: AppColors.strokeColor,
+          thickness: 1.0,
+        ),
       ),
       routerConfig: _router,
     );

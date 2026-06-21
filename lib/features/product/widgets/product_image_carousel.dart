@@ -52,6 +52,7 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
               for (int i = 0; i < widget.imagePaths.length; i++) ...[
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
                   width: _currentImageIndex == i ? 50.0 : 8.0,
                   height: _currentImageIndex == i ? 8.0 : 8.0,
                   decoration: BoxDecoration(

@@ -24,18 +24,22 @@ class NavButton extends StatelessWidget {
           color: const Color(0xFF353535),
           borderRadius: BorderRadius.circular(999.0),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        child: Container(
+          height: 33,
+          padding: const EdgeInsets.fromLTRB(12.0, 4.0, 16.0, 4.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AppIcon(icon, color: textColor, overrideSize: 16.0),
-              const SizedBox(width: 8.0),
+              AppIcon(icon, color: textColor, overrideSize: 24.0),
+              const SizedBox(width: 6.0),
               Text(
                 label,
                 style: GoogleFonts.googleSansFlex(
                   color: textColor,
                   fontWeight: FontWeight.w500,
+                  height: 1.4,
+                  letterSpacing: 12.0 * 0.03,
                 ),
               ),
             ],
@@ -43,7 +47,7 @@ class NavButton extends StatelessWidget {
         ),
       );
     } else {
-      return AppIcon(icon, color: textColor, overrideSize: 16.0);
+      return AppIcon(icon, color: textColor, overrideSize: 24.0);
     }
   }
 }

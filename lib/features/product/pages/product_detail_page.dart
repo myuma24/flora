@@ -1,12 +1,11 @@
 import 'package:flora/core/theme/app_colors.dart';
 import 'package:flora/core/theme/app_text_styles.dart';
-import 'package:flora/features/home/pages/home_page.dart'; // To access productData and pickedForYouData
-import 'package:flora/features/home/widgets/product_card.dart';
-import 'package:flora/features/product/widgets/product_option_pill.dart';
-import 'package:flora/features/product/widgets/product_image_carousel.dart';
-import 'package:flora/features/product/widgets/small_product_card.dart';
 import 'package:flora/core/widgets/app_icon.dart';
 import 'package:flora/core/widgets/quantity.dart';
+import 'package:flora/features/home/pages/home_page.dart'; // To access productData and pickedForYouData
+import 'package:flora/features/product/widgets/product_image_carousel.dart';
+import 'package:flora/features/product/widgets/product_option_pill.dart';
+import 'package:flora/features/product/widgets/small_product_card.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailPage extends StatefulWidget {

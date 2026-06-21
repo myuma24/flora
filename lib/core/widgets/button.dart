@@ -12,6 +12,10 @@ class AppButton extends StatefulWidget {
   final AppButtonType type;
   final bool active;
   final Widget? trailingIcon;
+  final EdgeInsetsGeometry? padding;
+  final FontWeight? fontWeight;
+  final Color? backgroundColor;
+  final Color? textColor;
 
   const AppButton({
     super.key,
@@ -20,6 +24,10 @@ class AppButton extends StatefulWidget {
     this.type = AppButtonType.primary,
     this.active = true,
     this.trailingIcon,
+    this.padding,
+    this.fontWeight,
+    this.backgroundColor,
+    this.textColor,
   });
 
   @override
@@ -88,6 +96,14 @@ class _AppButtonState extends State<AppButton> {
     // Apply overall opacity if disabled for skip/edit types (since they are outline/transparent)
     final double opacity = isEnabled ? 1.0 : 0.5;
 
+    // Apply explicit overrides if provided
+    if (widget.backgroundColor != null) {
+      backgroundColor = widget.backgroundColor!;
+    }
+    if (widget.textColor != null) {
+      textColor = widget.textColor!;
+    }
+
     // Compute text style based on button type
     TextStyle textStyle;
     if (widget.type == AppButtonType.edit) {
@@ -97,7 +113,7 @@ class _AppButtonState extends State<AppButton> {
       // Big buttons get DM Sans, SemiBold, font size 14, line height 88%, letter spacing -2%
       textStyle = GoogleFonts.dmSans(
         fontSize: 14.0,
-        fontWeight: FontWeight.w600, // SemiBold is w600
+        fontWeight: widget.fontWeight ?? FontWeight.w600, // SemiBold is w600
         height: 0.88,
         letterSpacing: 14.0 * -0.02,
         color: textColor,
@@ -126,9 +142,9 @@ class _AppButtonState extends State<AppButton> {
     );
 
     // Padding settings (Edit button has 6 top/bottom, 12 left/right; big buttons have 12 vertical, 16 horizontal)
-    final EdgeInsets padding = widget.type == AppButtonType.edit
+    final EdgeInsetsGeometry padding = widget.padding ?? (widget.type == AppButtonType.edit
         ? const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0)
-        : const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0);
+        : const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0));
 
     Widget container;
 

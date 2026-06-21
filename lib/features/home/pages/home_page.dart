@@ -88,104 +88,101 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: HomeHeader(),
-                ),
+    return SingleChildScrollView(
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: HomeHeader(),
+              ),
 
-                // Categories
-                const SizedBox(height: 16),
+              // Categories
+              const SizedBox(height: 16),
 
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    children: [
-                      for (int i = 0; i < categoryData.length; i++) ...[
-                        CategoryChip(label: categoryData[i]['label']),
-                        if (i != categoryData.length - 1)
-                          const SizedBox(width: 8.0),
-                      ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    for (int i = 0; i < categoryData.length; i++) ...[
+                      CategoryChip(label: categoryData[i]['label']),
+                      if (i != categoryData.length - 1)
+                        const SizedBox(width: 8.0),
                     ],
-                  ),
+                  ],
                 ),
+              ),
 
-                const SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
 
-                // Marketing Card
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: MarketingCard(),
-                ),
+              // Marketing Card
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: MarketingCard(),
+              ),
 
-                const SizedBox(height: 12.0),
+              const SizedBox(height: 12.0),
 
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: CategoryHeader(title: "In Season"),
-                ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: CategoryHeader(title: "In Season"),
+              ),
 
-                const SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
 
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    children: [
-                      for (int i = 0; i < productData.length; i++) ...[
-                        ProductCard(
-                          category: productData[i]['category']!,
-                          name: productData[i]['name']!,
-                          originalPrice: productData[i]['originalPrice']!,
-                          salePrice: productData[i]['salePrice']!,
-                          imagePath: productData[i]['imagePath']!,
-                        ),
-                        if (i != productData.length - 1)
-                          const SizedBox(width: 12.0),
-                      ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    for (int i = 0; i < productData.length; i++) ...[
+                      ProductCard(
+                        category: productData[i]['category']!,
+                        name: productData[i]['name']!,
+                        originalPrice: productData[i]['originalPrice']!,
+                        salePrice: productData[i]['salePrice']!,
+                        imagePath: productData[i]['imagePath']!,
+                      ),
+                      if (i != productData.length - 1)
+                        const SizedBox(width: 12.0),
                     ],
-                  ),
+                  ],
                 ),
+              ),
 
-                const SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
 
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: CategoryHeader(title: "Picked For You"),
-                ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: CategoryHeader(title: "Picked For You"),
+              ),
 
-                const SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
 
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    children: [
-                      for (int i = 0; i < pickedForYouData.length; i++) ...[
-                        ProductCard(
-                          category: pickedForYouData[i]['category']!,
-                          name: pickedForYouData[i]['name']!,
-                          originalPrice: pickedForYouData[i]['originalPrice']!,
-                          salePrice: pickedForYouData[i]['salePrice']!,
-                          imagePath: pickedForYouData[i]['imagePath']!,
-                        ),
-                        if (i != pickedForYouData.length - 1)
-                          const SizedBox(width: 12.0),
-                      ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    for (int i = 0; i < pickedForYouData.length; i++) ...[
+                      ProductCard(
+                        category: pickedForYouData[i]['category']!,
+                        name: pickedForYouData[i]['name']!,
+                        originalPrice: pickedForYouData[i]['originalPrice']!,
+                        salePrice: pickedForYouData[i]['salePrice']!,
+                        imagePath: pickedForYouData[i]['imagePath']!,
+                      ),
+                      if (i != pickedForYouData.length - 1)
+                        const SizedBox(width: 12.0),
                     ],
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

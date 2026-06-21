@@ -11,7 +11,7 @@ class AppColors {
   static const Color offWhite = Color(0xFFFFFDFA);
   static const Color primaryPink = Color(0xFFF4405F);
   static const Color white = Color(0xFFFFFFFF);
-  static const Color subLabelLighter = Color(0xFFBAB1A5);
+  static const Color subLabelLighter = Color(0xFFDACFC0);
   static const Color subLabelDarker = Color(0xFF817874);
   static const Color darkerStrokeColor = Color(0xFF7D7D7D);
   static const Color darkerIconBackground = Color(0xFF454545);

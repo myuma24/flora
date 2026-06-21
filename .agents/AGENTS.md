@@ -7,7 +7,7 @@
 ## Design System & Icons
 - Use the `AppIcon` widget (`lib/core/widgets/app_icon.dart`) instead of standard Material Icons or manually styling SVG containers.
 - `AppIcon` handles borders, dynamic alert dots (`alert: true`), and background colors automatically.
-- When adding new SVGs, strip the `<rect>` background layer but preserve the native `viewBox` scale.
+- When adding new SVGs, export them from Figma, strip the background/borders, and ALWAYS run `python scripts/crop_svgs.py` to correctly crop the padding down to a standard 24x24 viewBox.
 - See the `manage_flora_icons` skill for detailed instructions.
 
 ## Typography & Text Styles

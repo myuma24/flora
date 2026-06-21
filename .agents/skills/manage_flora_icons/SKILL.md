@@ -15,8 +15,8 @@ The `AppIcon` component handles the circular background, borders, and dynamic re
 3. To add a new icon:
    - Export the base SVG from Figma (prefer the `Size=Default`, `Alert=Default` variant).
    - Strip out any `<rect>` background or border tags.
-   - Keep the original `viewBox` (e.g., `0 0 40 40`).
    - Save the raw path SVG into `assets/icons/<icon_name>.svg`.
+   - Run the `python scripts/crop_svgs.py` script from the project root! This script will automatically calculate the mathematical offsets to perfectly crop the Figma canvas padding down to a standard `24x24` viewBox window, keeping paths perfectly centered and flawlessly sized for the `AppIcon` component.
 
 ### Using the AppIcon Widget
 Always use the `AppIcon` widget for UI controls instead of manually building `Container` + `SvgPicture`.

@@ -45,10 +45,11 @@ class AppIcon extends StatelessWidget {
       );
     }
 
-    // 2. Otherwise, render wrapped in the circular container
-    final double containerSize = size == AppIconSize.small ? 24.0 : 40.0;
-    // Figma SVGs include empty space natively, so the SvgPicture should match containerSize
-    final double iconSize = containerSize;
+    // 2. Otherwise, calculate sizes based on the new 24x24 SVG baseline
+    final double iconSize = size == AppIconSize.small ? 14.0 : 24.0;
+    final double containerSize = iconOnly 
+        ? iconSize 
+        : (size == AppIconSize.small ? 24.0 : 40.0);
 
     final Color backgroundColor = fillColor ?? (active ? Colors.white : AppColors.offWhite);
     final Color borderStrokeColor = strokeColor ?? AppColors.strokeColor;
@@ -82,8 +83,8 @@ class AppIcon extends StatelessWidget {
           ),
           if (alert)
             Positioned(
-              top: size == AppIconSize.small ? 4.0 : 8.0,
-              right: size == AppIconSize.small ? 4.0 : 8.0,
+              top: iconOnly ? 0.0 : (size == AppIconSize.small ? 4.0 : 8.0),
+              right: iconOnly ? 0.0 : (size == AppIconSize.small ? 4.0 : 8.0),
               child: Container(
                 width: size == AppIconSize.small ? 6.0 : 8.0,
                 height: size == AppIconSize.small ? 6.0 : 8.0,
