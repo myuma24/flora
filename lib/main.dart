@@ -4,6 +4,7 @@ import 'package:flora/features/home/pages/home_page.dart';
 import 'package:flora/features/orders/pages/orders_page.dart';
 import 'package:flora/features/product/pages/product_detail_page.dart';
 import 'package:flora/features/profile/pages/profile_page.dart';
+import 'package:flora/features/search/pages/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -66,6 +67,10 @@ final GoRouter _router = GoRouter(
         final productName = state.uri.queryParameters['name'];
         return ProductDetailPage(productName: productName);
       },
+    ),
+    GoRoute(
+      path: '/search',
+      builder: (context, state) => const SearchPage(),
     ),
   ],
 );

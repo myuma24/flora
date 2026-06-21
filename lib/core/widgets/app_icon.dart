@@ -12,6 +12,7 @@ class AppIcon extends StatelessWidget {
   final bool alert;
   final AppIconSize size;
   final bool active;
+  final bool iconOnly;
   final Color? color;
   final double? overrideSize;
   final Color? fillColor;
@@ -23,6 +24,7 @@ class AppIcon extends StatelessWidget {
     this.alert = false,
     this.size = AppIconSize.defaultSize,
     this.active = true,
+    this.iconOnly = false,
     this.color,
     this.overrideSize,
     this.fillColor,
@@ -54,16 +56,18 @@ class AppIcon extends StatelessWidget {
     return Container(
       width: containerSize,
       height: containerSize,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        shape: BoxShape.circle,
-        border: borderStrokeColor == Colors.transparent
-            ? null
-            : Border.all(
-                color: borderStrokeColor,
-                width: 1.0,
-              ),
-      ),
+      decoration: iconOnly
+          ? null
+          : BoxDecoration(
+              color: backgroundColor,
+              shape: BoxShape.circle,
+              border: borderStrokeColor == Colors.transparent
+                  ? null
+                  : Border.all(
+                      color: borderStrokeColor,
+                      width: 1.0,
+                    ),
+            ),
       alignment: Alignment.center,
       child: Stack(
         alignment: Alignment.center,

@@ -19,6 +19,7 @@ class _CategoryChipState extends State<CategoryChip> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(999),
         border: Border.all(color: AppColors.strokeColor),
+        color: AppColors.offWhite,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
